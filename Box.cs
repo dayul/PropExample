@@ -8,25 +8,57 @@ namespace PropExample
 {
     class Box
     {
-        private int width;
-        private int height;
+        // C#에서는 속성(Property), 첫글자는 대문자로
+        //public int Width { get; set; }
+        //public int Height { get; set; }
 
-        public Box(int width, int height)
+        private int width;
+
+        public int Width
         {
-            if(width > 0 && height > 0)
-            {
-                this.width = width;
-                this.height = height;
-            }
-            else
-            {
-                Console.WriteLine("너비와 높이는 자연수로 초기화 해 주세요");
+            get { return width; }
+            set { if (value > 0)
+                {
+                    width = value;
+                }
+                else
+                {
+                    Console.WriteLine("너비는 자연수로 초기화 해 주세요");
+                }
             }
         }
 
-        public int Area()
+        private int height;
+        
+        public int Height
         {
-            return width * height;
+            get { return height; }
+            set
+            {
+                if (value > 0)
+                {
+                    height = value;
+                }
+                else
+                {
+                    Console.WriteLine("너비는 자연수로 초기화 해 주세요");
+                }
+            }
+        }
+
+
+        public Box(int width, int height)
+        {
+            // 알아서 setter를 호출, 검증은 setter에서 처리(코드 중복 방지)
+            Width = width;
+            Height = height;
+        }
+
+        private int area;
+
+        public int Area
+        {
+            get { return Height * Width; }
         }
     }
 }
