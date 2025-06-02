@@ -32,6 +32,14 @@ namespace PropExample
             Console.WriteLine("두번째 위치");
             Console.WriteLine(Sample.value);        // Sample 객체 생성 전, 레퍼런스 변수 생성 전에 정적 생성자 호출
             Console.WriteLine("세번째 위치");
+
+            // const vs readonly
+            Item item1 = new Item("고구마", 1500);
+            Item item2 = new Item("감자", 1000);
+            Item item3 = new Item("옥수수", 2000);
+            Console.WriteLine(item1.id);
+            //Item1.id;
+            Console.WriteLine(item2.id);
         }
 
         // 메서드 오버로딩
