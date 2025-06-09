@@ -52,6 +52,42 @@ namespace PropExample
             box.Height = 200;
 
             Console.WriteLine(box.Area);
+
+            // 값 복사 vs 참조 복사
+            // 값 복사(value) : 값이 매개변수로 넘어가서 원본에 영향 X
+            int a = 10;
+            Change(a);
+            Console.WriteLine(a);
+
+            // 참조 복사(reference) : 객체의 레퍼런스(주소값)가 넘어가서 원본에 영향 O
+            Test test = new Test();
+            Change(test);
+            Console.WriteLine(test.value);
+
+            Test testA = new Test();
+            Test testB = testA;     // 같은 레퍼런스를 가리킴
+            testA.value = 10;
+            testB.value = 20;
+            Console.WriteLine("testA: " + testA);
+        }
+        static void Change(int input)
+        {
+            input = 20;
+        }
+        static void Change(Test input)
+        {
+            input.value = 20;
+        }
+
+        class Test
+        {
+            public int value = 10;
+
+            // 객체 출력 시 value가 출력되도록 override
+            public override string ToString()
+            {
+                return value.ToString();
+            }
         }
 
         // 메서드 오버로딩
